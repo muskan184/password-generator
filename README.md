@@ -1,1 +1,1 @@
-<h1>Random password generator🔑</h1>
+<h1>react practice code🔑</h1>
