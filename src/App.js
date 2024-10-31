@@ -1,103 +1,79 @@
 import logo from "./logo.svg";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.bundle";
 import { useState } from "react";
-import { LC, NC, SC, UC } from "./data/passChar";
+import { Col, Container, Row, Card, Button } from "react-bootstrap";
 
 function App() {
-  let [uppercase, setUppercase] = useState(false);
-  let [lowercase, setLowercase] = useState(false);
-  let [number, setNumber] = useState(false);
-  let [symbols, setSymbols] = useState(false);
-  let [Passwordlen, setPasswordlen] = useState(10);
-  let [fpass, setFpass] = useState(" ");
-
-  let createPassword = () => {
-    let charSet = "";
-    let finalpass = "";
-    if (uppercase || lowercase || number || symbols) {
-      if (uppercase) {
-        charSet += UC;
-      }
-
-      if (lowercase) {
-        charSet += LC;
-      }
-
-      if (number) {
-        charSet += NC;
-      }
-
-      if (symbols) {
-        charSet += SC;
-      }
-
-      for (let i = 0; i < Passwordlen; i++) {
-        finalpass += charSet.charAt(Math.floor(Math.random() * charSet.length));
-      }
-      setFpass(finalpass);
-    } else {
-      alert("please select one checkbox");
-    }
-  };
-  let copyPass = () => {
-    navigator.clipboard.writeText(fpass);
-  };
-
   return (
-    <>
-      <div className="passwordBox">
-        <h2>Password Generator</h2>
-        <div className="passwordboxin">
-          <input type="text" readOnly value={fpass} />{" "}
-          <button onClick={copyPass}>copy</button>
-        </div>
-        <div className="passlength">
-          <label>Password length</label>
-          <input
-            type="number"
-            max={20}
-            min={10}
-            value={Passwordlen}
-            onChange={(event) => setPasswordlen(event.target.value)}
-          />
-        </div>
-        <div className="passlength">
-          <label>Including upper case</label>
-          <input
-            type="checkbox"
-            checked={uppercase}
-            onChange={() => setUppercase(!uppercase)}
-          />
-        </div>
-        <div className="passlength">
-          <label>Including lower case</label>
-          <input
-            type="checkbox"
-            checked={lowercase}
-            onChange={() => setLowercase(!lowercase)}
-          />
-        </div>
-        <div className="passlength">
-          <label>Including number</label>
-          <input
-            type="checkbox"
-            checked={number}
-            onChange={() => setNumber(!number)}
-          />
-        </div>
-        <div className="passlength">
-          <label>Including symbols</label>
-          <input
-            type="checkbox"
-            checked={symbols}
-            onChange={() => setSymbols(!symbols)}
-          />
-        </div>
-        <button className="btn" onClick={createPassword}>
-          Generator Password
-        </button>
-      </div>
-    </>
+    <div className="main">
+      <Container className="con">
+        <Row>
+          <Col className="col-12 text-center py-4">
+            <h1>this is header</h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="lg-3">
+            Row1
+            <Card style={{ width: "18rem" }}>
+              <Card.Img variant="top" src="holder.js/100px180" />
+              <Card.Body>
+                <Card.Title>Card Title</Card.Title>
+                <Card.Text>
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </Card.Text>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col className="lg-3">
+            row2
+            <Card style={{ width: "18rem" }}>
+              <Card.Img variant="top" src="holder.js/100px180" />
+              <Card.Body>
+                <Card.Title>Card Title</Card.Title>
+                <Card.Text>
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </Card.Text>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col className="lg-3">
+            row3
+            <Card style={{ width: "18rem" }}>
+              <Card.Img variant="top" src="holder.js/100px180" />
+              <Card.Body>
+                <Card.Title>Card Title</Card.Title>
+                <Card.Text>
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </Card.Text>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col className="lg-3">
+            row4
+            <Card style={{ width: "18rem" }}>
+              <Card.Img variant="top" src="src/photo.jpg/100px180" />
+              <Card.Body>
+                <Card.Title>Card Title</Card.Title>
+                <Card.Text>
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </Card.Text>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }
 
